@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { View, StyleSheet, StatusBar, Text } from "react-native"; // Import Text component
+import { View, StyleSheet, StatusBar } from "react-native"; // Import Text component
 import { TextInput, Button, Snackbar } from "react-native-paper";
 import ButtonComponent from "./ButtonComponent";
+import { Text } from "react-native-paper";
 
 const SignUpForm = () => {
   const [name, setName] = useState("");
@@ -21,7 +22,9 @@ const SignUpForm = () => {
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="white" />
       <View style={styles.content}>
-        <Text style={styles.text}>Sign-Up Form</Text>
+        <Text variant="headlineLarge" style={styles.text}>
+          Sign Up
+        </Text>
         <TextInput
           mode="outlined"
           label="Name"
@@ -78,9 +81,11 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   text: {
-    fontSize: 18,
     textAlign: "center",
     marginBottom: 16,
+    textTransform: "uppercase",
+    fontWeight: "bold",
+    color: "#6d28d9",
   },
 });
 

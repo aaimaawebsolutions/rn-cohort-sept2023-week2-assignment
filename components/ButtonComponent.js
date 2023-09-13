@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Button } from "react-native-paper";
-import { Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
+import { Text } from "react-native-paper";
 
 const ButtonComponent = () => (
   <Button
@@ -10,7 +11,9 @@ const ButtonComponent = () => (
     buttonColor="#a78bfa"
     style={styles.button}
   >
-    <Text style={styles.buttonText}>Sign In</Text>
+    <Text variant="titleMedium" style={styles.buttonText}>
+      Sign In
+    </Text>
   </Button>
 );
 
@@ -23,7 +26,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#1e293b",
-    fontSize: 18,
   },
 });
 export default ButtonComponent;
