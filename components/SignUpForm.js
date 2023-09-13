@@ -1,0 +1,87 @@
+import React, { useState } from "react";
+import { View, StyleSheet, StatusBar, Text } from "react-native"; // Import Text component
+import { TextInput, Button, Snackbar } from "react-native-paper";
+import ButtonComponent from "./ButtonComponent";
+
+const SignUpForm = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [snackbarVisible, setSnackbarVisible] = useState(false);
+
+  const handleSignUp = () => {
+    // Perform your sign-up logic here
+    // You can send the data (name, email, password) to your backend API
+
+    // For this example, we'll just show a snackbar message
+    setSnackbarVisible(true);
+  };
+
+  return (
+    <View style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor="white" />
+      <View style={styles.content}>
+        <Text style={styles.text}>Sign-Up Form</Text>
+        <TextInput
+          mode="outlined"
+          label="Name"
+          value={name}
+          onChangeText={(text) => setName(text)}
+          style={styles.input}
+        />
+        <TextInput
+          mode="outlined"
+          label="Email"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+          style={styles.input}
+        />
+        <TextInput
+          mode="outlined"
+          label="Password"
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+          secureTextEntry
+          style={styles.input}
+        />
+        <ButtonComponent />
+      </View>
+
+      <Snackbar
+        visible={snackbarVisible}
+        onDismiss={() => setSnackbarVisible(false)}
+        duration={3000}
+      >
+        <Text>Sign-up successful! Redirecting...</Text>
+      </Snackbar>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: "100%",
+    backgroundColor: "#f5f3ff",
+  },
+  content: {
+    flex: 1,
+    padding: 16,
+    justifyContent: "center",
+  },
+  input: {
+    marginBottom: 16,
+    width: "100%",
+    backgroundColor: "#ddd6fe",
+  },
+  button: {
+    marginTop: 16,
+  },
+  text: {
+    fontSize: 18,
+    textAlign: "center",
+    marginBottom: 16,
+  },
+});
+
+export default SignUpForm;

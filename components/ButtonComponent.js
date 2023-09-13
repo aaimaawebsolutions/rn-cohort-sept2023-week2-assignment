@@ -4,11 +4,10 @@ import { Text, StyleSheet } from "react-native";
 
 const ButtonComponent = () => (
   <Button
-    default
-    mode="contained"
+    mode="outlined"
     onPress={() => console.log("Pressed")}
-    buttonColor="#60a5fa"
     uppercase={true}
+    buttonColor="#a78bfa"
     style={styles.button}
   >
     <Text style={styles.buttonText}>Sign In</Text>
@@ -17,12 +16,13 @@ const ButtonComponent = () => (
 
 const styles = StyleSheet.create({
   button: {
-    paddingVertical: 10,
+    marginTop: 16,
+    paddingVertical: 5,
     paddingHorizontal: 50,
-    borderRadius: 5,
+    borderRadius: 7,
   },
   buttonText: {
-    color: "white",
+    color: "#1e293b",
     fontSize: 18,
   },
 });
