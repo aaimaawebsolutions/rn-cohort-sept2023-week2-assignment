@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "my-app",
-    "slug": "my-app",
+    "name": "rn-cohort-sept2023-week2-assignment",
+    "slug": "rn-cohort-sept2023-week2-assignment",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
