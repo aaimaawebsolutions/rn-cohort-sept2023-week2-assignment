@@ -2,11 +2,22 @@ import * as React from "react";
 import { View } from "react-native";
 import { Appbar } from "react-native-paper";
 import { Text } from "react-native-paper";
-
+import {
+  MD3LightTheme as DefaultTheme,
+  PaperProvider,
+} from "react-native-paper";
 import { Card } from "react-native-paper";
 const CardComponent = ({ title_head, title, imageUrl, description }) => {
+  const Customtheme = {
+    ...DefaultTheme,
+    roundness: 0,
+  };
   return (
-    <View>
+    <View
+      style={{
+        backgroundColor: (theme = { Customtheme }),
+      }}
+    >
       <Appbar.Header>
         <Appbar.Content title={title_head} />
       </Appbar.Header>

@@ -5,6 +5,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import BottomNavigationBar from "./components/BottomNavigation";
 import HomeScreen from "./components/HomeScreen";
 import Settings from "./components/Settings";
+import { PaperProvider } from "react-native-paper";
 
 export default function App() {
   const [selectedTab, setSelectedTab] = useState("");
