@@ -18,12 +18,20 @@ const CardComponent = ({ title_head, title, imageUrl, description }) => {
         backgroundColor: (theme = { Customtheme }),
       }}
     >
-      <Appbar.Header>
-        <Appbar.Content title={title_head} />
-      </Appbar.Header>
-      <Card>
+      <Card style={{ margin: 10 }}>
+        <Appbar.Header
+          style={{
+            display: "flex",
+            height: 40,
+            borderRadius: 10,
+            backgroundColor: "#818cf8",
+          }}
+        >
+          <Appbar.Content style={{ alignItems: "center" }} title={title_head} />
+        </Appbar.Header>
+
         <Card.Cover
-          style={{ marginLeft: 10, marginRight: 10 }}
+          style={{ marginLeft: 10, marginRight: 10, paddingTop: 10 }}
           source={{
             uri: imageUrl,
           }}

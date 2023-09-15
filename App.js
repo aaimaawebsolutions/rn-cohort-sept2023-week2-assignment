@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import BottomNavigationBar from "./components/BottomNavigation";
 import HomeScreen from "./components/HomeScreen";
 import Settings from "./components/Settings";
-import { PaperProvider } from "react-native-paper";
+import { NavigationContainer } from "@react-navigation/native"; // Import NavigationContainer
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"; // Import TabNavigator
+import ProfilePage from "./components/ProfilePage"; // Import your ProfilePage component
+import { createStackNavigator } from "@react-navigation/stack";
 
+const Stack = createStackNavigator();
 export default function App() {
   const [selectedTab, setSelectedTab] = useState("");
 

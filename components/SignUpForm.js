@@ -11,10 +11,6 @@ const SignUpForm = () => {
   const [snackbarVisible, setSnackbarVisible] = useState(false);
 
   const handleSignUp = () => {
-    // Perform your sign-up logic here
-    // You can send the data (name, email, password) to your backend API
-
-    // For this example, we'll just show a snackbar message
     setSnackbarVisible(true);
   };
 
