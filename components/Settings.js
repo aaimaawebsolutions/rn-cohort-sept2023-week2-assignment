@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView } from "react-native-gesture-handler";
 import FeatherIcon from "react-native-vector-icons/Feather";
 import { Switch } from "react-native-paper";
+import Profile from "./Profile";
 
 const SECTIONS = [
   {
@@ -38,6 +39,7 @@ const Settings = () => {
   return (
     <SafeAreaView>
       <ScrollView contentContainerStyle={styles.container}>
+        <Profile />
         <View style={styles.header}>
           <Text style={styles.title}>Settings</Text>
           <Text style={styles.subtitle}>Update your Preferences Here</Text>

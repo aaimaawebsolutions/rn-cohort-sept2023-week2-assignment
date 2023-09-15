@@ -14,7 +14,7 @@ import {
 } from "react-native-paper";
 import Dashboard from "../components/Dashboard";
 
-import Help from "../components/Help";
+import Notes from "../components/Notes";
 import Profit from "../components/Profit";
 import DarkMode from "../components/DarkMode";
 import Settings from "../components/Settings";
@@ -62,8 +62,8 @@ const Navigator = () => {
               />
 
               <Drawer.Screen
-                name="Help"
-                component={Help}
+                name="Notes"
+                component={Notes}
                 options={{ drawerIcon: HelpdIcon }}
               />
               <Drawer.Screen

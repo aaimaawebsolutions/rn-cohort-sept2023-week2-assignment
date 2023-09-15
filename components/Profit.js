@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, SafeAreaView, Button } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { ScrollView } from "react-native-gesture-handler";
 export default function Profit() {
   const [date, setDate] = useState(new Date(1598051730000));
   const [mode, setMode] = useState("date");
@@ -26,35 +27,37 @@ export default function Profit() {
   };
   return (
     <View style={styles.container}>
-      <SafeAreaView>
-        <View>
-          <Button onPress={showDatepicker} title="Show date picker!" />
-        </View>
-        <View style={{ marginTop: 30 }}>
-          <Button onPress={showTimepicker} title="Show time picker!" />
-        </View>
+      <ScrollView>
+        <SafeAreaView>
+          <View>
+            <Button onPress={showDatepicker} title="Show date picker!" />
+          </View>
+          <View style={{ marginTop: 30 }}>
+            <Button onPress={showTimepicker} title="Show time picker!" />
+          </View>
 
-        <Text
-          style={{
-            marginTop: 20,
-            backgroundColor: "blue",
-            padding: 20,
-            color: "white",
-            borderRadius: 10,
-          }}
-        >
-          selected: {date.toLocaleString()}
-        </Text>
-        {show && (
-          <DateTimePicker
-            testID="dateTimePicker"
-            value={date}
-            mode={mode}
-            is24Hour={true}
-            onChange={onChange}
-          />
-        )}
-      </SafeAreaView>
+          <Text
+            style={{
+              marginTop: 20,
+              backgroundColor: "blue",
+              padding: 20,
+              color: "white",
+              borderRadius: 10,
+            }}
+          >
+            selected: {date.toLocaleString()}
+          </Text>
+          {show && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={date}
+              mode={mode}
+              is24Hour={true}
+              onChange={onChange}
+            />
+          )}
+        </SafeAreaView>
+      </ScrollView>
     </View>
   );
 }
