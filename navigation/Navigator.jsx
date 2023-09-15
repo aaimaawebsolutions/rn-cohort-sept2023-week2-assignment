@@ -1,13 +1,23 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  DarkTheme,
+  NavigationContainer,
+  useTheme,
+} from "@react-navigation/native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { View } from "react-native";
+import { View, useColorScheme } from "react-native";
+import {
+  MD3LightTheme as DefaultTheme,
+  PaperProvider,
+} from "react-native-paper";
 import Dashboard from "../components/Dashboard";
 
 import Help from "../components/Help";
 import Profit from "../components/Profit";
+import DarkMode from "../components/DarkMode";
+import Settings from "../components/Settings";
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -22,9 +32,18 @@ const ProfitIcon = ({ focused, color, size }) => (
   <Ionicons name="md-cart" size={size} color={color} />
 );
 
+const theme = {
+  ...DefaultTheme,
+
+  colors: {
+    myOwnColor: "silver",
+    background: "lightblue",
+  },
+};
+
 const Navigator = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={useColorScheme === "dark" ? DarkTheme : theme}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="MainDashboard">
           {() => (
@@ -51,6 +70,11 @@ const Navigator = () => {
                 name="Profit"
                 component={Profit}
                 options={{ drawerIcon: ProfitIcon }}
+              />
+              <Drawer.Screen
+                name="Settings"
+                component={Settings}
+                headerShown="false"
               />
             </Drawer.Navigator>
           )}

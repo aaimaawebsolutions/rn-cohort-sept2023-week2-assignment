@@ -5,23 +5,23 @@ import "react-native-gesture-handler";
 
 import {
   MD3LightTheme as DefaultTheme,
+  MD2DarkTheme,
   PaperProvider,
 } from "react-native-paper";
 
 import Navigator from "./navigation/Navigator";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
+const theme = {
+  ...DefaultTheme,
+
+  colors: {
+    myOwnColor: "dodgerblue",
+    background: "lightblue",
+  },
+};
+
 export default function App() {
-  const theme = {
-    ...DefaultTheme,
-    // Specify custom property
-    myOwnProperty: true,
-    ...DefaultTheme.colors,
-    // Specify custom property in nested object
-    colors: {
-      myOwnColor: "#663399",
-    },
-  };
   return (
     <SafeAreaProvider>
       <PaperProvider theme={theme}>

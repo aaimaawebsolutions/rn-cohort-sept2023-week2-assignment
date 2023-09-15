@@ -1,8 +1,15 @@
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { Avatar, Button, Card } from "react-native-paper";
+import {
+  DarkTheme,
+  NavigationContainer,
+  useTheme,
+} from "@react-navigation/native";
 
 const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
+
+// const { colors } = useTheme();
 
 export default function Dashboard() {
   return (
@@ -12,6 +19,7 @@ export default function Dashboard() {
           title="Card Title"
           subtitle="Card Subtitle"
           left={LeftContent}
+          // style={{ color: color.text }}
         />
         <Card.Content>
           <Text variant="titleLarge">Card title</Text>
