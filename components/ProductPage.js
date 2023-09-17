@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ScrollView, View, Image } from "react-native";
 import { Card, Title, Paragraph, useTheme } from "react-native-paper";
 import {
@@ -9,6 +9,7 @@ import {
   Text,
   RadioButton,
 } from "react-native-paper";
+import { Searchbar } from "react-native-paper";
 
 const products = [
   {
@@ -127,13 +128,30 @@ const products = [
 
 const ProductCatalog = () => {
   const theme = useTheme();
+  const [searchQuery, setSearchQuery] = useState(""); // State to hold the search query
+
+  // Function to handle search query changes
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
+
+  // Function to filter products based on the search query
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <ScrollView style={{ flex: 1 }}>
       <Appbar.Header style={{ backgroundColor: "#ede9fe" }}>
         <Appbar.Content title="Products" />
       </Appbar.Header>
-      {products.map((product, index) => (
+      <Searchbar
+        placeholder="Search for products"
+        onChangeText={handleSearch}
+        value={searchQuery}
+        style={{ margin: 10 }}
+      />
+      {filteredProducts.map((product, index) => (
         <Card key={index} style={{ margin: 10 }}>
           <Card.Cover style={{ margin: 5 }} source={product.image} />
           <Card.Content>
