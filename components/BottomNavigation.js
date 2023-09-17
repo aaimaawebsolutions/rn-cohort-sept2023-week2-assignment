@@ -7,7 +7,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text, BottomNavigation } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { NavigationContainer } from "@react-navigation/native";
-
+import ProductCatalog from "./ProductPage";
 const Tab = createBottomTabNavigator();
 
 const BottomNavigationBar = () => {
@@ -76,6 +76,16 @@ const BottomNavigationBar = () => {
             tabBarLabel: "Settings",
             tabBarIcon: ({ color, size }) => {
               return <Icon name="cog" size={size} color={color} />;
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Products"
+          component={ProductCatalog}
+          options={{
+            tabBarLabel: "Products",
+            tabBarIcon: ({ color, size }) => {
+              return <Icon name="basket" size={size} color={color} />;
             },
           }}
         />
