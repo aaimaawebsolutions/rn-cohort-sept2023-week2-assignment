@@ -10,8 +10,9 @@ const DrawerScreen = ({navigation}) => {
             ListHeaderComponent={() => {
                 return (
                     <Appbar.Header>
+                        <Appbar.Action icon="menu" onPress={() => navigation.openDrawer()} />
                         <Appbar.Content title="Product Catalog" />
-                        <TouchableWithoutFeedback onPress={() => navigation.openDrawer()}>
+                        <TouchableWithoutFeedback onPress={() => navigation.navigate('Drawer2')}>
                             <Avatar.Text size={35} label="XD" style={{marginRight: 10}} />
                         </TouchableWithoutFeedback>
                     </Appbar.Header>

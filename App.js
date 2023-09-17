@@ -35,7 +35,7 @@ function MyDrawer() {
   return (
     <Drawer.Navigator>
       <Drawer.Screen name="Drawer1" component={DrawerScreen} options={{title: 'Products Catalog', headerShown: false}}/>
-      <Drawer.Screen name="Drawer2" component={Drawerscreen2} />
+      <Drawer.Screen name="Drawer2" component={Drawerscreen2} options={{title: 'User Profile', headerShown: false}}/>
     </Drawer.Navigator>
   );
 }
