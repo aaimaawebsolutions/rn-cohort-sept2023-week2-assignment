@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Image } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import {
   Appbar,
   Modal,
@@ -35,24 +37,7 @@ const HomeScreen = ({ navigation }) => {
     description: "",
   });
 
-  const [mountains, setMountains] = useState([
-    {
-      title_head: "Mt. Everest",
-      title: "Mount Everest: The Roof of the World",
-      imageUrl:
-        "http://shadedrelief.com/Everest-3D-Map/Everest-3D-Map-No-Type.jpg",
-      description:
-        'Mount Everest is the tallest mountain on Earth, standing at 8,848 meters (29,032 feet) above sea level. It is located in the Mahalangur Himal sub-range of the Himalayas, on the border between Nepal and China. Everest is a sacred mountain to the Sherpas, who have lived in the region for centuries. They call it Chomolungma, which means "Mother Goddess of the World."',
-    },
-    {
-      title_head: "Mount Kilimanjaro",
-      title: "Mount Kilimanjaro: The Roof of Africa",
-      imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/6/6b/Mt._Kilimanjaro_12.2006.JPG",
-      description:
-        "Mount Kilimanjaro is the tallest mountain in Africa, standing at 5,895 meters (19,341 feet) above sea level. It is located in the Kilimanjaro National Park, in the northeastern part of Tanzania.Kilimanjaro is a dormant volcano, and its three volcanic cones are Kibo, Mawenzi, and Shira. Kibo is the highest peak, and it is also the most popular for climbing.",
-    },
-  ]);
+  const [mountains, setMountains] = useState([]); // Initialize mountains as an empty array
 
   const [selectedMountainIndex, setSelectedMountainIndex] = useState(null);
 
@@ -61,6 +46,33 @@ const HomeScreen = ({ navigation }) => {
 
   const openProfile = () => {
     navigation.navigate("ProfilePage");
+  };
+  useEffect(() => {
+    loadMountainData();
+  }, []);
+
+  const loadMountainData = async () => {
+    try {
+      const storedMountains = await AsyncStorage.getItem("mountains");
+
+      if (storedMountains) {
+        setMountains(JSON.parse(storedMountains));
+      }
+    } catch (error) {
+      console.error("Error loading mountain data: ", error);
+    }
+  };
+
+  const saveMountainData = async (data) => {
+    try {
+      await AsyncStorage.setItem("mountains", JSON.stringify(data));
+    } catch (error) {
+      console.error("Error saving mountain data: ", error);
+    }
+  };
+
+  const updateMountainData = (field, value) => {
+    setMountainData({ ...mountainData, [field]: value });
   };
 
   const handleAddMountain = () => {
@@ -71,12 +83,15 @@ const HomeScreen = ({ navigation }) => {
       mountainData.description
     ) {
       if (selectedMountainIndex === null) {
-        setMountains([...mountains, mountainData]);
+        const updatedMountains = [...mountains, mountainData];
+        setMountains(updatedMountains);
+        saveMountainData(updatedMountains);
       } else {
         const updatedMountains = [...mountains];
         updatedMountains[selectedMountainIndex] = mountainData;
         setMountains(updatedMountains);
         setSelectedMountainIndex(null);
+        saveMountainData(updatedMountains);
       }
 
       setMountainData({
@@ -158,33 +173,25 @@ const HomeScreen = ({ navigation }) => {
                 style={{ marginTop: 10 }}
                 label="Title Head"
                 value={mountainData.title_head}
-                onChangeText={(text) =>
-                  setMountainData({ ...mountainData, title_head: text })
-                }
+                onChangeText={(text) => updateMountainData("title_head", text)}
               />
               <TextInput
                 style={{ marginTop: 10 }}
                 label="Title"
                 value={mountainData.title}
-                onChangeText={(text) =>
-                  setMountainData({ ...mountainData, title: text })
-                }
+                onChangeText={(text) => updateMountainData("title", text)}
               />
               <TextInput
                 style={{ marginTop: 10 }}
                 label="Image URL"
                 value={mountainData.imageUrl}
-                onChangeText={(text) =>
-                  setMountainData({ ...mountainData, imageUrl: text })
-                }
+                onChangeText={(text) => updateMountainData("imageUrl", text)}
               />
               <TextInput
                 style={{ marginTop: 10 }}
                 label="Description"
                 value={mountainData.description}
-                onChangeText={(text) =>
-                  setMountainData({ ...mountainData, description: text })
-                }
+                onChangeText={(text) => updateMountainData("description", text)}
               />
               <Button
                 style={{ marginTop: 10 }}
