@@ -1,14 +1,34 @@
 import { StyleSheet, View } from "react-native";
-import React from "react";
-import { Button, Card, Text, useTheme } from "react-native-paper";
+import React, { useEffect, useState } from "react";
+import { Button, Card, Switch, Text, useTheme } from "react-native-paper";
 
-const Home = () => {
-  const theme = useTheme()
+const Home = ({ navigation }) => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const theme = useTheme();
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Switch
+          value={isDarkMode}
+          onValueChange={() => setIsDarkMode(!isDarkMode)}
+        />
+      ),
+    });
+  });
   return (
-    <>
-      <View style={[styles.mainContainer, {backgroundColor: theme.colors.onSecondaryContainer}]} >
-        <Button mode="contained-tonal">Custom Button</Button>
-        <Button mode="elevated">Custom Button</Button>
+    <View
+      style={{
+        backgroundColor: isDarkMode
+          ? theme.colors.onSecondaryContainer
+          : theme.colors.secondaryContainer,
+        flex: 1,
+        justifyContent: "center",
+        alignItems: 'center'
+      }}
+    >
+      <View>
+        <Button mode={isDarkMode ? "contained-tonal" : 'contained'}>Custom Button</Button>
+        <Button mode={isDarkMode? "elevated" : 'outlined'}>Custom Button</Button>
 
         <Text
           variant="displayMedium"
@@ -26,7 +46,7 @@ const Home = () => {
           <Button mode="contained">Ok</Button>
         </Card.Actions>
       </Card>
-    </>
+    </View>
   );
 };
 

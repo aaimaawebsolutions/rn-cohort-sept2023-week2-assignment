@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "./Home";
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Settings from "./Settings";
+import { Switch } from "react-native-paper";
 
 const Tab = createBottomTabNavigator();
 
@@ -29,7 +30,11 @@ const HomeScreen = () => {
         tabBarInactiveTintColor: "gray",
       })}
     >
-      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Home" component={Home} options={({navigation, route}) => ({
+        headerRight: () => (
+          <Switch />
+        )
+      })}/>
       <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
   );
