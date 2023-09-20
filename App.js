@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-paper";
 import Login from "./screens/Login";
 import Signup from "./screens/Signup";
-import Home from "./screens/Home";
+import Home from "./screens/HomeScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -15,7 +15,9 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="HomeScreen" component={Home} options={{
+          headerShown: false
+        }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

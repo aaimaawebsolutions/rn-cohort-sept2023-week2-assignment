@@ -20,7 +20,7 @@ const Login = ({ navigation }) => {
       />
       <Button
         mode="contained-tonal"
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => navigation.navigate("HomeScreen")}
       >
         Login
       </Button>
