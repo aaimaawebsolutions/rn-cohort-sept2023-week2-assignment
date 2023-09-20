@@ -43,7 +43,7 @@ const Signup = () => {
         }}
       >
         <Text>Already have an account.</Text>
-        <Button mode="text" onPress={() => navigation.navigate("Signup")}>
+        <Button mode="text" onPress={() => navigation.navigate("Login")}>
           Login
         </Button>
       </View>
