@@ -1,12 +1,15 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "./Home";
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Settings from "./Settings";
 import { Switch } from "react-native-paper";
 
-const Tab = createBottomTabNavigator();
+import { createMaterialBottomTabNavigator } from 'react-native-paper/react-navigation';
+import Profile from "./Profile";
+
+const Tab = createMaterialBottomTabNavigator();
 
 const HomeScreen = () => {
   return (
@@ -36,6 +39,7 @@ const HomeScreen = () => {
         )
       })}/>
       <Tab.Screen name="Settings" component={Settings} />
+      <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );
 };
