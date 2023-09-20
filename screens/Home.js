@@ -1,11 +1,12 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
-import { Button, Card, Text } from "react-native-paper";
+import { Button, Card, Text, useTheme } from "react-native-paper";
 
 const Home = () => {
+  const theme = useTheme()
   return (
     <>
-      <View style={styles.mainContainer}>
+      <View style={[styles.mainContainer, {backgroundColor: theme.colors.onSecondaryContainer}]} >
         <Button mode="contained-tonal">Custom Button</Button>
         <Button mode="elevated">Custom Button</Button>
 
