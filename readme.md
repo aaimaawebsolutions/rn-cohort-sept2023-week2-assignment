@@ -4,4 +4,4 @@
 
 > Learning and implementing different navigation features in React Native
 
-- Start time: Thu Sept 21 2:44 PM
+- Start time: Tuesday Sept 26 12:13 PM
