@@ -11,6 +11,7 @@ import {
 } from "react-native-paper";
 import { Searchbar } from "react-native-paper";
 import { Snackbar } from "react-native-paper";
+import LinearGradient from "react-native-linear-gradient";
 
 const products = [
   {
@@ -169,7 +170,10 @@ const ProductCatalog = () => {
   };
   return (
     <View style={{ flex: 1 }}>
-      <ScrollView style={{ flex: 1 }}>
+      <LinearGradient
+        colors={["#FF5733", "#FFAB33"]} // Define your gradient colors here
+        style={{ flex: 1 }}
+      >
         <Appbar.Header style={{ backgroundColor: "#ede9fe" }}>
           <Appbar.Content title="Products" />
         </Appbar.Header>
@@ -179,40 +183,42 @@ const ProductCatalog = () => {
           value={searchQuery}
           style={{ margin: 10 }}
         />
-        {filteredProducts.map((product, index) => (
-          <Card key={index} style={{ margin: 10 }}>
-            <Card.Cover style={{ margin: 5 }} source={product.image} />
-            <Card.Content>
-              <Title>{product.name}</Title>
-              <Paragraph>{product.description}</Paragraph>
-              <List.Item
-                title="Category"
-                description={product.category}
-                left={() => <List.Icon icon="folder" />}
-              />
-              <List.Item
-                title="Price"
-                description={product.price}
-                left={() => <List.Icon icon="currency-usd" />}
-              />
-              <Button
-                mode="contained"
-                onPress={() => handleAddToCart(index)}
-                style={{ marginTop: 10 }}
-              >
-                Add to Cart
-              </Button>
-            </Card.Content>
-          </Card>
-        ))}
-      </ScrollView>
-      <Snackbar
-        visible={snackbarVisible}
-        onDismiss={closeSnackbar}
-        duration={2000}
-      >
-        <Text style={{ color: "white" }}>Item added to cart!</Text>
-      </Snackbar>
+        <ScrollView style={{ flex: 1 }}>
+          {filteredProducts.map((product, index) => (
+            <Card key={index} style={{ margin: 10 }}>
+              <Card.Cover style={{ margin: 5 }} source={product.image} />
+              <Card.Content>
+                <Title>{product.name}</Title>
+                <Paragraph>{product.description}</Paragraph>
+                <List.Item
+                  title="Category"
+                  description={product.category}
+                  left={() => <List.Icon icon="folder" />}
+                />
+                <List.Item
+                  title="Price"
+                  description={product.price}
+                  left={() => <List.Icon icon="currency-usd" />}
+                />
+                <Button
+                  mode="contained"
+                  onPress={() => handleAddToCart(index)}
+                  style={{ marginTop: 10 }}
+                >
+                  Add to Cart
+                </Button>
+              </Card.Content>
+            </Card>
+          ))}
+        </ScrollView>
+        <Snackbar
+          visible={snackbarVisible}
+          onDismiss={closeSnackbar}
+          duration={2000}
+        >
+          <Text style={{ color: "white" }}>Item added to cart!</Text>
+        </Snackbar>
+      </LinearGradient>
     </View>
   );
 };
